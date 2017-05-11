@@ -11,5 +11,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.recents.grid=true
 
+# Wifi´Direct
+PRODUCT_COPY_FILES += \
+    device/google/dragon/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/google/dragon/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/dragon/overlay-lineage
