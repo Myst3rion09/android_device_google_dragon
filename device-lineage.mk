@@ -16,5 +16,9 @@ PRODUCT_COPY_FILES += \
     device/google/dragon/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     device/google/dragon/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
+# dragon-keypad
+PRODUCT_COPY_FILES += \
+    device/google/dragon/dragon-keypad.kl:system/usr/keylayout/dragon-keypad.kl
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/dragon/overlay-lineage
