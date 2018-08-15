@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Allow Lineage config to override others
+-include device/google/dragon/BoardConfigLineage.mk
+
 # Use the non-open-source parts, if they're present
 -include vendor/google_devices/dragon/BoardConfigVendor.mk
 # Build a separate vendor.img
