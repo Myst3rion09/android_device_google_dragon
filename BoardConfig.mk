@@ -121,6 +121,10 @@ endif
 
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.dragon
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /vendor/lib/hw/camera.dragon.so|libshim_camera.so
+
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/dragon-setup.sh
 
