@@ -183,6 +183,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service
 
+# USB HAL
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
 #TODO(dgreid) is this right?
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0
