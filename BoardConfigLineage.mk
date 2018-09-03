@@ -5,9 +5,6 @@ TARGET_KERNEL_SOURCE := kernel/google/dragon
 TARGET_KERNEL_CONFIG := lineageos_dragon_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.fit
 
-# Enable vendor image symlink
-BOARD_NEEDS_VENDORIMAGE_SYMLINK := true
-
 # Do not build libhealthd.lineage
 WITH_LINEAGE_CHARGER := false
 
