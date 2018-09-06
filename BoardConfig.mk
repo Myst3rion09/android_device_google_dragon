@@ -36,6 +36,8 @@ TARGET_KERNEL_SOURCE := kernel/google/dragon
 TARGET_KERNEL_CONFIG := lineageos_dragon_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.fit
 
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
 # Disable emulator for "make dist" until there is a 64-bit qemu kernel
 BUILD_EMULATOR := false
 
