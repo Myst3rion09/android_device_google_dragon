@@ -16,3 +16,6 @@
 
 add_lunch_combo aosp_dragon-userdebug
 add_lunch_combo aosp_dragon-eng
+add_lunch_combo lineage_dragon-userdebug
+add_lunch_combo lineage_dragon-eng
+
