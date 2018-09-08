@@ -14,8 +14,9 @@
 # limitations under the License.
 #
 
-# Use the non-open-source parts, if they're present
--include vendor/google/dragon/BoardConfigVendor.mk
+
+$(shell mkdir -p out/target/product/dragon/root/vendor/firmware)
+
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
 

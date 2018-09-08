@@ -49,7 +49,7 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/ueventd.dragon.rc:root/ueventd.dragon.rc \
     $(LOCAL_PATH)/speakerdsp.ini:system/etc/cras/speakerdsp.ini \
     $(LOCAL_PATH)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
-    $(LOCAL_PATH)/com.nvidia.nvsi.xml:system/etc/permissions/com.nvidia.nvsi.xml
+    $(LOCAL_PATH)/com.nvidia.nvsi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nvidia.nvsi.xml
 
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -112,7 +112,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth/BCM4350C0_003.001.012.0364.0754.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4350c0.hcd \
+    $(LOCAL_PATH)/bluetooth/BCM4350C0_003.001.012.0364.0754.hcd:system/firmware/bcm4350c0.hcd \
     $(LOCAL_PATH)/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_vendor.conf
 
 # Bluetooth HAL
@@ -153,25 +153,31 @@ PRODUCT_PACKAGES += \
 
 # Camera HAL
 PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.2-impl \
-    android.hardware.camera.provider@2.4-impl
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl \
+    libshim_camera
 
 # Health HAL
 PRODUCT_PACKAGES += \
-    android.hardware.health@1.0-impl
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-service
 
 # Light HAL
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.dragon
 
+# Memtrack
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
+
 # Keymaster HAL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-impl:64 \
     android.hardware.keymaster@3.0-service
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-impl:64 \
     android.hardware.gatekeeper@1.0-service
 
 # Dumpstate HAL
@@ -220,10 +226,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.soundtrigger@2.0-impl \
-    android.hardware.soundtrigger@2.0-service
 
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -247,10 +251,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # for keyboard key mappings
 PRODUCT_PACKAGES += \
     DragonKeyboard
-
-# Vibrator HAL
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
 
 # Allows healthd to boot directly from charger mode rather than initiating a reboot.
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -280,7 +280,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.vulkan=tegra
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
-$(call inherit-product-if-exists, vendor/google/dragon/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/nvidia/dragon/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/nvidia/dragon-common/device-vendor.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 ENABLE_LIBDRM := true
@@ -297,3 +298,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/google/dragon/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     device/google/dragon/seccomp_policy/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+
+$(call inherit-product-if-exists, vendor/nvidia/dragon/dragon-vendor.mk)
