@@ -29,11 +29,7 @@ ifeq ($(wildcard vendor/nvidia/dragon-tlk/tlk),vendor/nvidia/dragon-tlk/tlk)
     SECURE_OS_BUILD ?= tlk
 endif
 
-ifeq ($(TARGET_PRODUCT), ryu_kasan)
-LOCAL_FSTAB := $(LOCAL_PATH)/fstab.dragon.nocrypt
-else
 LOCAL_FSTAB := $(LOCAL_PATH)/fstab.dragon
-endif
 
 TARGET_RECOVERY_FSTAB = $(LOCAL_FSTAB)
 
