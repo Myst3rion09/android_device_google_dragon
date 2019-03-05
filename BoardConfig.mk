@@ -112,6 +112,9 @@ ART_USE_HSPACE_COMPACT=true
 # let charger mode enter suspend
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# Security Patch Level
+VENDOR_SECURITY_PATCH := 2019-03-05
+
 BOARD_SEPOLICY_DIRS += device/google/dragon/sepolicy
 
 # add firmware update to the updater binary
