@@ -25,10 +25,10 @@
 $(call inherit-product, device/google/dragon/aosp_dragon.mk)
 $(call inherit-product, device/google/dragon/permissions.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/du/config/common_full_tablet_wifionly.mk)
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_tablet_wifionly.mk)
 
-PRODUCT_NAME := du_dragon
+PRODUCT_NAME := lineage_dragon
 PRODUCT_DEVICE := dragon
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel C
